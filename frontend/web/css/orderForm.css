@@ -1,0 +1,62 @@
+.form-container {
+    width: 800px;
+    margin: 0 auto;
+    background-color: #eee;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+}
+
+.order-form {
+    width: 490px;
+    background-color: #fff;
+}
+
+.order-input {
+    height: 51px;
+    color: #323232;
+    font-size: 18px;
+    font-weight: 400;
+    width: 317px;
+}
+
+.order-input-short {
+    width: 233px;
+}
+
+.order-label {
+    color: #323232;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+
+#screen1 {
+    width: 317px;
+    margin: 0 auto;
+}
+
+#screen2 {
+    width: 317px;
+    margin: 0 auto;
+}
+
+.flex-container-for-field {
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.unit {
+    width: 84px;
+    color: #323232;
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 12px;
+    margin-bottom: 25px;
+}
+
+.order-checkbox {
+    height: 17px;
+    width: 17px;
+}
