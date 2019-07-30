@@ -40,7 +40,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'form/index',
+                '/' => 'order/form',
             ],
         ],
     ],

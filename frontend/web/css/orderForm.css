@@ -18,6 +18,7 @@
     font-size: 18px;
     font-weight: 400;
     width: 317px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, rgba(128, 128, 128, 0.05) 100%);
 }
 
 .order-input-short {
@@ -44,7 +45,7 @@
 .flex-container-for-field {
     display: flex;
     align-items: flex-end;
-
+    position: relative;
 }
 
 .unit {
@@ -59,4 +60,35 @@
 .order-checkbox {
     height: 17px;
     width: 17px;
+}
+
+.check-mark {
+    height: 51px;
+    width: 40px;
+    background-color: #ccf;
+    position: absolute;
+    right: -40px;
+}
+
+.input-error-description {
+    height: 15px;
+    background-color: #cfc;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.order-sum-container {
+    color: #323232;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.fa-ruble-sign {
+    font-size: 20px;
+}
+
+.red-text {
+    color: #a10031;;
 }
