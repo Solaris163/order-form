@@ -15,7 +15,7 @@ class OrderCreator {
         let json = JSON.stringify(order);
 
         $.ajax({
-            url: "order/create",
+            url: "/order/create",
             type: "POST",
             dataType: "json",
             data: {hg: 'dfd'},

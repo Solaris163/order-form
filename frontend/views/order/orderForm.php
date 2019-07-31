@@ -4,15 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 //зарегистрируем orderForm.css и добавим depends чтобы orderForm.css загружался после css-файлов, указанных в AppAsset
-$this->registerCssFile('css/orderForm.css', ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerJsFile('js/jquery/jquery-3.4.1.js');
-$this->registerJsFile('js/calculator.js');
-$this->registerJsFile('js/validation.js');
-$this->registerJsFile('js/render.js');
-$this->registerJsFile('js/orderCreator.js');
-$this->registerJsFile('js/handler.js');
-$this->registerJsFile('js/orderForm.js');
-$this->registerJsFile('js/main.js');
+$this->registerCssFile('/css/orderForm.css', ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerJsFile('/js/jquery/jquery-3.4.1.js');
+$this->registerJsFile('/js/calculator.js');
+$this->registerJsFile('/js/validation.js');
+$this->registerJsFile('/js/render.js');
+$this->registerJsFile('/js/orderCreator.js');
+$this->registerJsFile('/js/handler.js');
+$this->registerJsFile('/js/orderForm.js');
+$this->registerJsFile('/js/main.js');
 
 $form = ActiveForm::begin([
     'id' => 'order-form',
