@@ -3,19 +3,23 @@
  * Пока он только может подсчитывать сумму заказа
  */
 class Calculator {
-    constructor(length = 0, height = 0, materialPrice = 0, mountingPrice = 0) {
-        this._length = length; //длина забора
-        this._height = height; //высота забора
-        this._materialPrice = materialPrice; //стоимость квадратного метра материала
+    constructor(materialsPrices = 0, mountingPrice = 0) {
+        this._materialsPrices = materialsPrices; //стоимость квадратного метра материала
         this._mountingPrice = mountingPrice; //стоимость монтажа квадратного метра
+        this._length = 0; //длина забора
+        this._height = 0; //высота забора
+        this._material = null; //материал забора
+        this._needMounting = 0; //нужен ли монтаж
         this._sum = 0;
     }
 
     /**
-     * Считает сумму заказа и присваивает ее значение свойству _sum
+     * Подсчитывает сумму заказа и присваивает ее значение свойству _sum
      */
-    calculateOrderSum() {
-        this._sum = this._length * this._height * (this._materialPrice + this._mountingPrice);
+    updateOrderSum() {
+        let materialPrice = this._materialsPrices[this._material];
+        this._sum = this._length * this._height * (materialPrice + this._mountingPrice*this._needMounting);
+        if (!this._sum) this._sum = 0; //если сумма не определена, приравняем ее нулю
     }
 
     set length(value) {
@@ -26,13 +30,17 @@ class Calculator {
         this._height = value;
     }
 
-    set materialPrice(value) {
-        this._materialPrice = value;
+    set material(value) {
+        this._material = value;
     }
 
-    set mountingPrice(value) {
-        this._mountingPrice = value;
+    set needMounting(value) {
+        this._needMounting = value;
     }
+
+    // set sum(value) {
+    //     this._sum = value;
+    // }
 
     get sum() {
         return this._sum;
