@@ -5,23 +5,27 @@
  */
 class OrderCreator {
 
-    static create(fields) {
+    static create(fields, calculator) {
 
         let order = {}; //объявим объект для записи в него данных заказа
         for (let field in fields) { //переберем поля формы и вставим их значения в объект order
             order[field] = fields[field].val();
+        }
+        order['orderSum'] = calculator.sum;
+        if(fields['needMounting'].prop("checked")) {
+            order['needMounting'] = 1;
         }
 
         let json = JSON.stringify(order);
 
         $.ajax({
             url: "/order/create",
-            type: "POST",
-            dataType: "json",
-            data: {hg: 'dfd'},
+            type: "post",
+            data: {data:json},
             error: function() {alert('Не удалось создать заказ');},
             success: function(answer) {
-                $('#order-number').text(`Заказ номер ${answer['orderNumber']} создан`);
+                let $resalt = $.parseJSON(answer);
+                $('#order-number').text(`Заказ номер ${$resalt['orderNumber']} создан`);
             }
         })
     }

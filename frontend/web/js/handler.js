@@ -74,7 +74,7 @@ class Handler {
                 break;
             case 'button-send':
                 if (this.render.isScreen2Valid()) {
-                    OrderCreator.create(this.fields); //вызовем метод create для создания заказа, и передадим ему поля формы
+                    OrderCreator.create(this.fields, this.calculator); //вызовем метод create для создания заказа, и передадим ему поля формы
                     this.screen2.hide();
                     this.screen3.show();
                 }

@@ -66,7 +66,8 @@ $form = ActiveForm::begin([
                     ->checkbox([
                         'label' => 'Нужен монтаж',
                         'labelOptions' => ['class' => 'control-label order-label'],
-                        'class' => 'order-checkbox'
+                        'class' => 'order-checkbox',
+                        'value' => 0
                     ])?>
             </div>
 

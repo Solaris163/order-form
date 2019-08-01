@@ -40,6 +40,8 @@ class OrderForm {
         this.screen1Id = 'screen1'; //id первого экрана формы
         this.screen2Id = 'screen2'; //id второго экрана формы
         this.screen3Id = 'screen3'; //id третьего экрана формы
+        this.lengthUnitId = 'length-unit'; //id поля для единицы измерения длины забора
+        this.heightUnitId = 'length-unit'; //id поля для единицы измерения высоты забора
         this.orderNumberFieldID = 'order-number'; //id поля для вывода номера заказа
         this.buttonForwardId = 'button-forward'; //id кнопки "Вперед"
         this.buttonReturnId = 'button-return'; //id кнопки "Назад"
