@@ -5,6 +5,8 @@ namespace frontend\controllers;
 
 
 use common\models\OrderForm;
+use Yii;
+use yii\helpers\BaseJson;
 use yii\web\Controller;
 
 /**
@@ -16,8 +18,23 @@ class OrderController extends Controller
 
     public function actionForm()
     {
-        $model = new OrderForm();
+        if (\Yii::$app->request->isAjax) {
+            //$json = (string) \Yii::$app->request->post();
 
+            try {
+                $json = $_POST['data'];
+                $result = json_decode($json);
+            } catch (\Exception $e) {
+                Yii::warning($e);
+                file_put_contents('../../data/1.txt', $e);
+            }
+
+            file_put_contents('../../data/1.txt', $result->email);
+        }
+
+
+
+        $model = new OrderForm();
         return $this->render('orderForm',
             [
                 'model' => $model,
