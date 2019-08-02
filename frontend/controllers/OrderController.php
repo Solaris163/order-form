@@ -33,10 +33,21 @@ class OrderController extends Controller
         if (\Yii::$app->request->isAjax) {
             $json = $_POST['data'];
             $email = json_decode($json)->email;
-
-            $this->contact($email, 'Заказ созддан');
+            $this->getResponse('{"orderNumber": "Y55588877"}'); //отправляем пользователю номер заказа
+            $this->contact($email, 'Заказ создан'); //отправляем пользователю письмо
         }
-        return '{"orderNumber": "Y55588877"}';
+    }
+
+    /**
+     * Метод отвечает на ajax запрос, не останавливая скрипта.
+     * Это сделано для того, чтобы сначала отдать ответ пользователю, а потом послать сообщение, или еще что-нибудь
+     */
+    public function getResponse ($response) {
+        ignore_user_abort(true);
+        header("Connection: close");
+        header("Content-Length: " . mb_strlen($response));
+        echo $response;
+        flush();
     }
 
     public function contact($email, $message)
