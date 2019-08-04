@@ -112,10 +112,24 @@
     text-decoration: underline;
 }
 
-h2 {
-    margin-bottom: 20px;
-}
-
 .button-send {
     width: 230px;
+}
+
+.error {
+    border-color: red;
+}
+
+#screen3 {
+    color: #323232;
+    font-size: 16px;
+}
+
+#screen3 .blue {
+    color: #458ae1;
+}
+
+#screen3 h2 {
+    font-size: 30px;
+    font-weight: 400;
 }

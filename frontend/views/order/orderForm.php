@@ -6,7 +6,9 @@ use yii\widgets\ActiveForm;
 //зарегистрируем orderForm.css и добавим depends чтобы orderForm.css загружался после css-файлов, указанных в AppAsset
 $this->registerCssFile('/css/orderForm.css', ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerJsFile('/js/jquery/jquery-3.4.1.js');
-$this->registerJsFile('/js/calculator.js');
+$this->registerJsFile('/js/config.js');
+$this->registerJsFile('/js/unit.js');
+$this->registerJsFile('/js/orderModel.js');
 $this->registerJsFile('/js/validation.js');
 $this->registerJsFile('/js/render.js');
 $this->registerJsFile('/js/orderCreator.js');
@@ -81,12 +83,7 @@ $form = ActiveForm::begin([
 
             <input type="button" id="button-forward" class="order-input button-forward" value="Далее">
         </div>
-
-
-
     </fieldset>
-
-
 
     <fieldset id="screen2" class="order-fieldset">
 
@@ -121,19 +118,20 @@ $form = ActiveForm::begin([
 
             <input type="button" id="button-send" class="order-input button-send" value="Отправить">
         </div>
-
-
-
     </fieldset>
 
-    <fieldset id="screen3" class="order-fieldset">
-
-        <h2 align="center">Заказ сформирован</h2>
-
-        <div class="order-fieldset-container">
-            <div id="order-number"></div>
-        </div>
-
+    <fieldset id="screen3" class="order-fieldset" align="center">
+        <h2>
+            <span id="show-name"></span>,<br>
+            заказ <span class="blue">№ <span id="show-number"></span></span> сформирован!
+        </h2>
+        <h3>
+            Мы повторили его комплектацию <br> на почту <span id="show-email" class="blue"></span>
+        </h3>
+        <h3>
+            В ближайшее время наш специалист <br> свяжется с вами по телефону <br>
+            <span id="show-phone" class="blue"></span>
+        </h3>
     </fieldset>
 
 <?php ActiveForm::end() ?>
