@@ -81,7 +81,8 @@ $form = ActiveForm::begin([
                 </span>
             </div>
 
-            <input type="button" id="button-forward" class="order-input button-forward" value="Далее">
+            <button id="button-forward" class="order-input button-forward">ДАЛЕЕ</button>
+
         </div>
     </fieldset>
 
@@ -116,11 +117,40 @@ $form = ActiveForm::begin([
             </div>
             <div id="phone-error-description" class="input-error-description"></div>
 
+            <div>
+                Вы укомплектовали забор
+                <span class="blue"> длиной
+                    <span id="screen2-length"></span>
+                    <span id="screen2-unit-length"></span>
+                </span>
+                и
+                <span class="blue"> высотой
+                    <span id="screen2-height"></span>
+                    <span id="screen2-unit-height"></span>
+                </span>
+                из материала
+                <span class="blue">
+                    <span id="screen2-material"></span>
+                </span>
+                на сумму
+                <span class="red-text">
+                    <span id="screen2-sum"></span>
+                    <i class="fas fa-ruble-sign"></i>
+                </span>
+            </div>
+
             <input type="button" id="button-send" class="order-input button-send" value="Отправить">
         </div>
     </fieldset>
 
     <fieldset id="screen3" class="order-fieldset" align="center">
+        <h2>
+            Заказ оформляется
+        </h2>
+
+    </fieldset>
+
+    <fieldset id="screen4" class="order-fieldset" align="center">
         <h2>
             <span id="show-name"></span>,<br>
             заказ <span class="blue">№ <span id="show-number"></span></span> сформирован!

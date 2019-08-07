@@ -61,7 +61,6 @@ class Render {
      * Метод проверяет валидны ли все поля на экране 1
      * Метод возвращает true или false
      * TODO передавать в этот метод объект с полями, чтобы не было хардкода
-     * TODO добавить изменение цвета поля на красный, если поле не валидно
      */
     isScreen1Full() {
         let result = true;
@@ -88,7 +87,6 @@ class Render {
      * Метод проверяет валидны ли все поля на экране 2
      * Метод возвращает true или false
      * TODO передавать в этот метод объект с полями, чтобы не было хардкода
-     * TODO добавить изменение цвета поля на красный, если поле не валидно
      */
     isScreen2Full() {
         let result = true;
@@ -113,9 +111,8 @@ class Render {
         this.otherElements.showNumber.text(answer['orderNumber']);
         this.otherElements.showEmail.text(this.orderModel.email);
         this.otherElements.showPhone.text(this.orderModel.phone);
-        //$('#order-number').text(`Заказ с номером ${answer['orderNumber']} создан`);
-        this.otherElements.screen2.hide();
-        this.otherElements.screen3.show();
+        this.otherElements.screen3.hide();
+        this.otherElements.screen4.show();
     }
 
 

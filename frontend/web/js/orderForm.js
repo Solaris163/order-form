@@ -69,6 +69,7 @@ class OrderForm {
     _createButtonsListeners(buttons, handler) {
         for (let button in buttons) { //перебираем объект, состоящий из объектов jQuery
             buttons[button].on('click', (e) => { //вешаем обработчик на событие нажатия кнопки
+                e.preventDefault();
                 handler.buttonHandle(e.target.id); //вызываем метод buttonHandle и передаем ему id кнопки
             });
         }

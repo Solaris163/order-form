@@ -5,6 +5,7 @@ class Handler {
         this.render = render; //экземпляр класса Render
         this.screen1 = otherElements['screen1']; //объект jQuery для экрана 1
         this.screen2 = otherElements['screen2']; //объект jQuery для экрана 2
+        this.screen3 = otherElements['screen3']; //объект jQuery для экрана 3
         this.validation = new Validation(); //создадим экземпляр класса Validation
         this.unit = new Unit(orderModel); //создадим экземпляр класса Unit
     }
@@ -79,6 +80,8 @@ class Handler {
                 if (this.render.isScreen2Full()) {
                     OrderCreator.create(this.orderModel, this.render); //вызовем метод create для создания заказа, и передадим ему поля формы
                     //TODO здесь показать песочные часы
+                    this.screen2.hide();
+                    this.screen3.show();
                 }
                 break;
         }

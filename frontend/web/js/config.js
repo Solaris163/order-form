@@ -66,6 +66,7 @@ class Config {
             screen1: 'screen1', //id первого экрана формы
             screen2: 'screen2', //id второго экрана формы
             screen3: 'screen3', //id третьего экрана формы
+            screen4: 'screen4', //id четвертого экрана формы
             length: 'length-unit', //id поля для единицы измерения длины забора
             height: 'height-unit', //id поля для единицы измерения высоты забора
             orderSum: 'order-sum', //id поля для вывода суммы заказа
