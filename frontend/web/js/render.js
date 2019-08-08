@@ -107,10 +107,22 @@ class Render {
     }
 
     showAnswer(answer) {
-        this.otherElements.showName.text(this.orderModel.userName);
-        this.otherElements.showNumber.text(answer['orderNumber']);
-        this.otherElements.showEmail.text(this.orderModel.email);
-        this.otherElements.showPhone.text(this.orderModel.phone);
+        let str =
+            '<h2>' +
+                this.orderModel.userName + ',<br>' + 'заказ' +
+                '<span class="blue"> №' +  answer['orderNumber'] + '</span>' +
+                'сформирован!' +
+            '</h2>' +
+            '<h3>' +
+                'Мы повторили его комплектацию <br> на почту' +
+                '<span class="blue">' + this.orderModel.email + '</span>' +
+            '</h3>' +
+            '<h3>' +
+                'В ближайшее время наш специалист <br> свяжется с вами по телефону <br>' +
+                '<span class="blue">' + this.orderModel.phone + '</span>' +
+            '</h3>';
+
+        this.otherElements.screen4.html(str);
         this.otherElements.screen3.hide();
         this.otherElements.screen4.show();
     }
