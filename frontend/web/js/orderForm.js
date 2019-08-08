@@ -26,6 +26,8 @@ class OrderForm {
 
         this._createFieldsListeners(fields, handler); //повесим обработчики на поля формы
         this._createButtonsListeners(buttons, handler); //повесим обработчики на кнопки формы
+
+        this._fillSelect(fields.material, Config.materials); //заполним поле select значениями из массива materials
     }
 
     /**
@@ -72,6 +74,16 @@ class OrderForm {
                 e.preventDefault();
                 handler.buttonHandle(e.target.id); //вызываем метод buttonHandle и передаем ему id кнопки
             });
+        }
+    }
+
+    /**
+     * Метод заполняет значения опции value для поля select
+     * Метод в качестве аргументов получает объект jQuery для элемента select, массивы с материалами и с ценами.
+     */
+    _fillSelect(element, materials) {
+        for (let material in materials) {
+            element.append( $(`<option value=${material}>${materials[material].name} ${materials[material].price} р. за м²</option>`));
         }
     }
 }

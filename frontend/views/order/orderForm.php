@@ -49,10 +49,10 @@ $form = ActiveForm::begin([
                 <?= $form->field($model, 'material', ['template' => "{label}\n{input}"])
                     ->dropDownList(
                         [
-                            'ironSheet' => 'Профнастил 400 р. за м²',
-                            'modules' => 'Модули 500 р. за м²',
-                            'concrete' => 'Бетон 700 р. за м²',
-                            'mesh' => 'Сетка 200 р. за м²'
+//                            'ironSheet' => 'Профнастил 400 р. за м²',
+//                            'modules' => 'Модули 500 р. за м²',
+//                            'concrete' => 'Бетон 700 р. за м²',
+//                            'mesh' => 'Сетка 200 р. за м²'
                         ],
                         [
                             'class' => 'form-control order-input',
@@ -121,12 +121,12 @@ $form = ActiveForm::begin([
                 Вы укомплектовали забор
                 <span class="blue"> длиной
                     <span id="screen2-length"></span>
-                    <span id="screen2-unit-length"></span>
+                    <span id="screen2-length-unit"></span>
                 </span>
                 и
                 <span class="blue"> высотой
                     <span id="screen2-height"></span>
-                    <span id="screen2-unit-height"></span>
+                    <span id="screen2-height-unit"></span>
                 </span>
                 из материала
                 <span class="blue">
@@ -151,17 +151,18 @@ $form = ActiveForm::begin([
     </fieldset>
 
     <fieldset id="screen4" class="order-fieldset" align="center">
-        <h2>
-            <span id="show-name"></span>,<br>
-            заказ <span class="blue">№ <span id="show-number"></span></span> сформирован!
-        </h2>
-        <h3>
-            Мы повторили его комплектацию <br> на почту <span id="show-email" class="blue"></span>
-        </h3>
-        <h3>
-            В ближайшее время наш специалист <br> свяжется с вами по телефону <br>
-            <span id="show-phone" class="blue"></span>
-        </h3>
+        <div id="screen4-order-description"></div>
+<!--        <h2>-->
+<!--            <span id="show-name"></span>,<br>-->
+<!--            заказ <span class="blue">№ <span id="show-number"></span></span> сформирован!-->
+<!--        </h2>-->
+<!--        <h3>-->
+<!--            Мы повторили его комплектацию <br> на почту <span id="show-email" class="blue"></span>-->
+<!--        </h3>-->
+<!--        <h3>-->
+<!--            В ближайшее время наш специалист <br> свяжется с вами по телефону <br>-->
+<!--            <span id="show-phone" class="blue"></span>-->
+<!--        </h3>-->
     </fieldset>
 
 <?php ActiveForm::end() ?>
