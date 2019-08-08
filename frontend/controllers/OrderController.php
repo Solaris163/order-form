@@ -34,28 +34,15 @@ class OrderController extends Controller
             $json = $_POST['data'];
             $email = json_decode($json)->email;
             $this->contact($email, 'Заказ создан'); //отправляем пользователю письмо
-            $this->getResponse('{"orderNumber": "5587"}'); //отправляем пользователю номер заказа
+            return '{"orderNumber": "5587"}'; //отправляем пользователю номер заказа
         }
-    }
-
-    /**
-     * Метод отвечает на ajax запрос, не останавливая скрипта.
-     * Это сделано для того, чтобы сначала отдать ответ пользователю, а потом послать например сообщение администратору
-     * В реальном проекте это может и неуместно, но здесь добавил такую возможность.
-     */
-    public function getResponse ($response) {
-        ignore_user_abort(true);
-        header("Connection: close");
-        header("Content-Length: " . mb_strlen($response));
-        echo $response;
-        flush();
     }
 
     public function contact($email, $message)
     {
         try {
             \Yii::$app->mailer->compose()
-                ->setFrom('test.yii2@mail.ru')
+                ->setFrom('test.yii@mail.ru')
                 ->setTo($email)
                 ->setSubject('Заказ')
                 ->setTextBody($message)

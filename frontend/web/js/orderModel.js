@@ -4,8 +4,8 @@
  */
 class OrderModel {
     constructor() {
-        this._materialsPrices = Config.prices['materialsPrices']; //стоимости квадратного метра материала
-        this._mountingPrice = Config.prices['mountingPrice']; //стоимость монтажа квадратного метра
+        this._materials = Config.materials; //материалы
+        this._mountingPrice = Config.mountingPrice; //стоимость монтажа квадратного метра
         this._length = 0; //длина забора
         this._height = 0; //высота забора
         this._material = null; //материал забора
@@ -20,9 +20,11 @@ class OrderModel {
      * Метод подсчитывает сумму заказа и присваивает ее значение свойству _sum
      */
     updateOrderSum() {
-        let materialPrice = this._materialsPrices[this._material]; //найдем цену материала из объекта _materialsPrices
-        this._sum = this._length * this._height * (materialPrice + this._mountingPrice*this._needMounting);
-        if (!this._sum) this._sum = 0; //если сумма не определена, приравняем ее нулю
+        if (this._material) { //проверяем выбран ли материал
+            let materialPrice = this._materials[this._material].price; //найдем цену материала из объекта _materialsPrices
+            this._sum = this._length * this._height * (materialPrice + this._mountingPrice*this._needMounting);
+            if (!this._sum) this._sum = 0; //если сумма не определена, приравняем ее нулю
+        }else this._sum = 0;
     }
 
     set length(value) {

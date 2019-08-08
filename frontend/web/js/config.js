@@ -70,20 +70,26 @@ class Config {
             length: 'length-unit', //id поля для единицы измерения длины забора
             height: 'height-unit', //id поля для единицы измерения высоты забора
             orderSum: 'order-sum', //id поля для вывода суммы заказа
-            showNumber: 'show-number', //id поля для вывода номера заказа
-            showName: 'show-name', //id поля для вывода имени покупателя
-            showEmail: 'show-email', //id поля для вывода электронного адреса покупателя
-            showPhone: 'show-phone' //id поля для вывода телефонного номера покупателя
+            screen2OrderDescription: 'screen2-order-description', //id поля для вывода описания заказа на экране 2
         }
     }
 
     /**
-     * Метод возвращает объект с ценами (по-хорошему надо брать из базы данных)
+     * Метод возвращает объект с материалами (по-хорошему надо брать из базы данных)
      */
-    static get prices() {
+    static get materials() {
         return {
-            materialsPrices: {ironSheet: 400, modules: 500, concrete: 700, mesh: 200}, //стоимость разных материалов
-            mountingPrice: 200 //стоимость монтажа квадратного метра
+            ironSheet: {name: 'Профнастил', price: 400},
+            modules: {name: 'Модули', price: 500},
+            concrete: {name: 'Бетон', price: 700},
+            mesh: {name: 'Сетка', price: 200}
         }
+    }
+
+    /**
+     * Метод возвращает объект со стоимостью монтажа квадратного метра (по-хорошему надо брать из базы данных)
+     */
+    static get mountingPrice() {
+        return 200;
     }
 }
