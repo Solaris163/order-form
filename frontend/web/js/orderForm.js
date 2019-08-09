@@ -83,7 +83,9 @@ class OrderForm {
      */
     _fillSelect(element, materials) {
         for (let material in materials) {
-            element.append( $(`<option value=${material}>${materials[material].name} ${materials[material].price} р. за м²</option>`));
+            let name = materials[material].name; //найдем название материала
+            name = name[0].toUpperCase() + name.slice(1); //заменим первую букву на заглавную
+            element.append( $(`<option value=${material}>${name} ${materials[material].price} р. за м²</option>`));
         }
     }
 }

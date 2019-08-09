@@ -70,7 +70,7 @@ class Config {
             length: 'length-unit', //id поля для единицы измерения длины забора
             height: 'height-unit', //id поля для единицы измерения высоты забора
             orderSum: 'order-sum', //id поля для вывода суммы заказа
-            screen2OrderDescription: 'screen2-order-description', //id поля для вывода описания заказа на экране 2
+            screen2OrderDescription: 'screen2-order-description' //id поля для вывода описания заказа на экране 2
         }
     }
 
@@ -79,10 +79,10 @@ class Config {
      */
     static get materials() {
         return {
-            ironSheet: {name: 'Профнастил', price: 400},
-            modules: {name: 'Модули', price: 500},
-            concrete: {name: 'Бетон', price: 700},
-            mesh: {name: 'Сетка', price: 200}
+            ironSheet: {name: 'профнастил', price: 400},
+            modules: {name: 'модули', price: 500},
+            concrete: {name: 'бетон', price: 700},
+            mesh: {name: 'сетка', price: 200}
         }
     }
 
