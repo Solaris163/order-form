@@ -2,12 +2,7 @@
  * Класс содержит логику выбора окончания для едениц измерения (метр или метров)
  */
 class Unit {
-    constructor(orderModel) {
-        this.orderModel = orderModel;
-    }
-
-    getUnit(field) {
-        let value =  this.orderModel[field];
+    static getUnit(value) {
         if (value === 0) return 'метров'; //если равно 0, вернем "метров"
         if (!Number.isInteger(value)) return 'метра'; //если не целое число, вернем "метра"
 

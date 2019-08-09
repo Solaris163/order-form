@@ -7,7 +7,6 @@ class Handler {
         this.screen2 = otherElements['screen2']; //объект jQuery для экрана 2
         this.screen3 = otherElements['screen3']; //объект jQuery для экрана 3
         this.validation = new Validation(); //создадим экземпляр класса Validation
-        this.unit = new Unit(orderModel); //создадим экземпляр класса Unit
     }
 
     /**
@@ -20,13 +19,13 @@ class Handler {
             case 'height':
                 if (this.validation.validate(field, value)) { //валидируем данные
                     this.orderModel[field] = value; //через сеттер меняем значение для соответствующего поля в моднли ордера
-                    let unit = this.unit.getUnit(field); //найдем еденицу измерения (метров, метр или метра)
+                    let unit = Unit.getUnit(this.orderModel[field]); //найдем еденицу измерения (метров, метр или метра)
                     this.orderModel.updateOrderSum(); //обновляем сумму в модели ордера
                     this.render.setIsFieldValid(field, true); //устанавливаем значение isFieldValid для поля равным true
                     this.render.updateForm(field, unit); //обновляем форму
                 }else {
                     this.orderModel[field] = 0; //через сеттер установим значение данного поля в модели ордера равным нулю
-                    let unit = this.unit.getUnit(field); //найдем еденицу измерения (метров, метр или метра)
+                    let unit = Unit.getUnit(this.orderModel[field]); //найдем еденицу измерения (метров, метр или метра)
                     this.orderModel.updateOrderSum(); //обновляем сумму в модели ордера
                     this.render.setIsFieldValid(field, false); //устанавливаем значение isFieldValid для поля равным false
                     this.render.updateForm(field, unit); //обновляем форму
@@ -68,6 +67,7 @@ class Handler {
         switch (buttonId) {
             case 'button-forward':
                 if (this.render.isScreen1Full()) {
+                    this.render.showOrderDescription();
                     this.screen1.hide();
                     this.screen2.show();
                 }

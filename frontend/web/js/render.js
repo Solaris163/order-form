@@ -30,16 +30,28 @@ class Render {
                 if (this.isFieldsValid[field]) { //проверяем валидно ли поле
                     this.checkMarksFields[field].show(); //показываем зеленую галочку
                     this.errorFields[field].text(''); //убираем сообщение об ошибке
-                    this.fields[field].removeClass('error');
+                    this.fields[field].removeClass('error'); //меняем стиль поля
                     this.otherElements[field].text(unit); //подставляем еденицу измерения (метров, метр или метра)
+                    if (this.isFieldsValid.length && this.isFieldsValid.height && this.isFieldsValid.material) { //проверяем заполнен ли эран1
+                        this.buttons.buttonForward.addClass('button-forward-active'); //активируем кнопку
+                    }
                 }else {
                     this.checkMarksFields[field].hide(); //убираем зеленую галочку
+                    this.buttons.buttonForward.removeClass('button-forward-active'); //дезактивируем кнопку
                 }
                 this.otherElements.orderSum.text(this.orderModel.sum); //обновляем сумму ордера
                 break;
             case 'material':
+                if (this.isFieldsValid[field]) { //проверяем валидно ли поле
+                    this.errorFields[field].text(''); //убираем сообщение об ошибке
+                    this.fields[field].removeClass('error'); //меняем стиль поля
+                    if (this.isFieldsValid.length && this.isFieldsValid.height && this.isFieldsValid.material) {
+                        this.buttons.buttonForward.addClass('button-forward-active'); //активируем кнопку
+                    }
+                }else {
+                    this.buttons.buttonForward.removeClass('button-forward-active'); //дезактивируем кнопку
+                }
                 this.otherElements.orderSum.text(this.orderModel.sum); //обновляем сумму ордера
-                this.errorFields[field].text(''); //убираем сообщение об ошибке
                 break;
             case 'needMounting':
                 this.otherElements.orderSum.text(this.orderModel.sum); //обновляем сумму ордера
@@ -60,16 +72,14 @@ class Render {
     /**
      * Метод проверяет валидны ли все поля на экране 1
      * Метод возвращает true или false
-     * TODO передавать в этот метод объект с полями, чтобы не было хардкода
      */
     isScreen1Full() {
         let result = true;
-        //дальше захардкодил
         if (!this.isFieldsValid.length) {
             this.errorFields.length.text('это поле заполнено неверно'); //выводим сообщение об ошибке
             this.fields.length.addClass('error'); //выделяем поле красной рамкой
             result = false;
-        } else this.fields.length.addClass('error');
+        }
         if (!this.isFieldsValid.height) {
             this.errorFields.height.text('это поле заполнено неверно');
             this.fields.height.addClass('error');
@@ -86,11 +96,9 @@ class Render {
     /**
      * Метод проверяет валидны ли все поля на экране 2
      * Метод возвращает true или false
-     * TODO передавать в этот метод объект с полями, чтобы не было хардкода
      */
     isScreen2Full() {
         let result = true;
-        //дальше захардкодил
         if (!this.isFieldsValid.userName) {
             this.errorFields.userName.text('это поле заполнено неверно');
             result = false;
@@ -106,15 +114,29 @@ class Render {
         return result;
     }
 
+    showOrderDescription() {
+        let str = 'Вы укомплектовали забор' +
+            '<span class="blue"> длиной ' + this.orderModel.length + ' ' + Unit.getUnit(this.orderModel.length) + '</span>' +
+            ' и ' +
+            '<span class="blue"> высотой ' + this.orderModel.height + ' ' + Unit.getUnit(this.orderModel.height) + '</span>' +
+            ' из материала ' +
+            '<span class="blue">' + Config.materials[this.orderModel.material].name + '</span>' +
+            ' на сумму ' +
+            '<span class="red-text">' + this.orderModel.sum + ' ' +
+            '<i class="fas fa-ruble-sign"></i>' +
+            '</span>'
+        this.otherElements.screen2OrderDescription.html(str);
+    }
+
     showAnswer(answer) {
         let str =
             '<h2>' +
                 this.orderModel.userName + ',<br>' + 'заказ' +
-                '<span class="blue"> №' +  answer['orderNumber'] + '</span>' +
-                'сформирован!' +
+                '<span class="blue"> № ' +  answer['orderNumber'] + '</span>' +
+                ' сформирован!' +
             '</h2>' +
             '<h3>' +
-                'Мы повторили его комплектацию <br> на почту' +
+                'Мы повторили его комплектацию <br> на почту ' +
                 '<span class="blue">' + this.orderModel.email + '</span>' +
             '</h3>' +
             '<h3>' +
