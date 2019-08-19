@@ -163,6 +163,12 @@
     background-color: #818183;
 }
 
+.button-send-active {
+    border: 1.5px solid rgba(100, 125, 150, 0.4);
+    background-color: #3486eb;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+}
+
 .error {
     border-color: red;
 }

@@ -62,6 +62,9 @@ class Render {
                 if (this.isFieldsValid[field]) { //проверяем валидно ли поле
                     this.checkMarksFields[field].show(); //показываем зеленую галочку
                     this.errorFields[field].text(''); //убираем сообщение об ошибке
+                    if (this.isFieldsValid.userName && this.isFieldsValid.phone && this.isFieldsValid.email) {
+                        this.buttons.buttonSend.addClass('button-send-active'); //активируем кнопку
+                    }
                 }else {
                     this.checkMarksFields[field].hide(); //убираем зеленую галочку
                 }
