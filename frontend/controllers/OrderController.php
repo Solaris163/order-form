@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 
+use common\models\Order;
 use common\models\OrderForm;
 use Yii;
 use yii\helpers\BaseJson;
@@ -26,16 +27,37 @@ class OrderController extends Controller
     }
 
     /**
-     * TODO метод должен принимать ajax-запрос, создавать заказ, сохранять его в базе и отдавать номер заказа
+     * Метод принимает ajax-запрос с данными заказа, сохраняет заказ в базу данных и получает id последней записи в базу
+     * Возвращает json - строку с номером заказа, равным id последней записи в базу данных
      */
     public function actionCreate()
     {
         if (\Yii::$app->request->isAjax) {
-            $json = $_POST['data'];
-            $email = json_decode($json)->email;
-            $this->contact($email, 'Заказ создан'); //отправляем пользователю письмо
-            return '{"orderNumber": "5587"}'; //отправляем пользователю номер заказа
+            $model = new Order(); //создаем модель ActiveRecord
+            $json = \Yii::$app->request->post()['data'];
+            $model->attributes = json_decode($json, true); //загружем в модель данные из isAjax-запроса
+            $model->save();
+            $id = Yii::$app->db->getLastInsertID();
+            $email = $model->email;
+            $message = $this->createMessage($model); //создаем сообщение пользователю
+            $this->contact($email, $message); //отправляем пользователю письмо
+            $answer = ['orderNumber' => $id]; //создаем ответ на isAjax-запрос и вставляем в него номер заказа
+            return json_encode($answer); //отправляем ответ на isAjax-запрос
         }
+    }
+
+
+    /**
+     * Метод принимает модель заказа и возвращает сообщение для отправки пользователю
+     * @var Order $model
+     * @return string
+     */
+    public function createMessage($model) {
+        $str = "Вы сделали заказ на сайте Лучшие-заборы.рф \r\n
+        Параметры Вашего заказа: \r\n
+        Длина: {$model->length} м. Высота: {$model->height} м. Материал: {$model->material} \r\n
+        Номер Вашего заказа: {$model->id}";
+        return $str;
     }
 
     public function contact($email, $message)
